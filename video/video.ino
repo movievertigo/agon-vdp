@@ -49,7 +49,7 @@
 #include <HardwareSerial.h>
 #include <fabgl.h>
 
-#define	DEBUG			0						// Serial Debug Mode: 1 = enable
+#define	DEBUG			1						// Serial Debug Mode: 1 = enable
 #define SERIALBAUDRATE	115200
 
 HardwareSerial	DBGSerial(0);
@@ -82,9 +82,9 @@ void setup() {
 	set_mode(1);
 	setupVDPProtocol();
 	processor = new VDUStreamProcessor(&VDPSerial);
+	initAudio();
 	processor->wait_eZ80();
 	setupKeyboardAndMouse();
-	initAudio();
 	processor->sendModeInformation();
 	boot_screen();
 }
